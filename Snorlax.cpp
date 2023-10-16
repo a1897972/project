@@ -1,54 +1,54 @@
-#include "Charizard.h"
+#include "Snorlax.h"
 #include <iostream>
 
-Charizard::Charizard(std::string name, int healingPower, int defensePoints,
-                     int attackPoints)
-    : Player(name, 510, 150), attack("Royal Blaze"), healingPower(30),
+Snorlax::Snorlax(std::string name, int healingPower, int defensePoints,
+                 int attackPoints)
+    : Player(name, 450, 150), attack("Collapse"), healingPower(30),
       defensePoints(defensePoints), attackPoints(attackPoints),
-      isCharizardActive(true), actionTaken(false) {}
+      isSnorlaxActive(true), actionTaken(false) {}
 
-std::string Charizard::getAttack() const { return attack; }
+std::string Snorlax::getAttack() const { return attack; }
 
-void Charizard::setAttack(std::string newAttack) { attack = newAttack; }
+void Snorlax::setAttack(std::string newAttack) { attack = newAttack; }
 
-int Charizard::getHealingPower() const { return healingPower; }
+int Snorlax::getHealingPower() const { return healingPower; }
 
-void Charizard::setHealingPower(int newHealingPower) {
+void Snorlax::setHealingPower(int newHealingPower) {
   healingPower = newHealingPower;
 }
 
-int Charizard::getDefensePoints() const { return defensePoints; }
+int Snorlax::getDefensePoints() const { return defensePoints; }
 
-void Charizard::setDefensePoints(int newDefensePoints) {
+void Snorlax::setDefensePoints(int newDefensePoints) {
   defensePoints = newDefensePoints;
 }
 
-int Charizard::getAttackPoints() const { return attackPoints; }
+int Snorlax::getAttackPoints() const { return attackPoints; }
 
-void Charizard::setAttackPoints(int newAttackPoints) {
+void Snorlax::setAttackPoints(int newAttackPoints) {
   attackPoints = newAttackPoints;
 }
 
-void Charizard::swingAttack(Player *opponent) {
+void Snorlax::swingAttack(Player *opponent) {
   int damage = getDamage();
   opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
             << " causing " << damage << " damage!\n";
 }
 
-void Charizard::heal() {
+void Snorlax::heal() {
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
-void Charizard::raiseDefense() {
+void Snorlax::raiseDefense() {
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 40;
+  int newDefense = currentDefense + 50;
   setDefensePoints(newDefense);
 }
 
-void Charizard::raiseAttack() {
+void Snorlax::raiseAttack() {
   int currentAttack = getAttackPoints();
   int increaseAmount = 50;
   int newAttack = currentAttack + increaseAmount;
@@ -57,19 +57,19 @@ void Charizard::raiseAttack() {
             << newAttack << "!\n";
 }
 
-void Charizard::switchPokemon() {
+void Snorlax::switchPokemon() {
   std::cout << getName() << " switched to Pokemon!" << std::endl;
 }
 
-void Charizard::displayStats() {
+void Snorlax::displayStats() {
   std::cout << "Name: " << getName() << std::endl;
   std::cout << "Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Attack Damage: " << getDamage() << std::endl;
 }
 
-void Charizard::resetActionTaken() { actionTaken = false; }
+void Snorlax::resetActionTaken() { actionTaken = false; }
 
-void Charizard::performTurnAction() {
+void Snorlax::performTurnAction() {
   raiseAttack();
   actionTaken = true;
 }

@@ -1,75 +1,75 @@
-#include "Lucario.h"
+#include "Ampharos.h"
 #include <iostream>
 
-Lucario::Lucario(std::string name, int healingPower, int defensePoints,
-                 int attackPoints)
-    : Player(name, 390, 130), attack("Accelerating Stab"), healingPower(30),
+Ampharos::Ampharos(std::string name, int healingPower, int defensePoints,
+                   int attackPoints)
+    : Player(name, 420, 120), attack("Gigavolt"), healingPower(30),
       defensePoints(defensePoints), attackPoints(attackPoints),
-      isLucarioActive(true), actionTaken(false) {}
+      isAmpharosActive(true), actionTaken(false) {}
 
-std::string Lucario::getAttack() const { return attack; }
+std::string Ampharos::getAttack() const { return attack; }
 
-void Lucario::setAttack(std::string newAttack) { attack = newAttack; }
+void Ampharos::setAttack(std::string newAttack) { attack = newAttack; }
 
-int Lucario::getHealingPower() const { return healingPower; }
+int Ampharos::getHealingPower() const { return healingPower; }
 
-void Lucario::setHealingPower(int newHealingPower) {
+void Ampharos::setHealingPower(int newHealingPower) {
   healingPower = newHealingPower;
 }
 
-int Lucario::getDefensePoints() const { return defensePoints; }
+int Ampharos::getDefensePoints() const { return defensePoints; }
 
-void Lucario::setDefensePoints(int newDefensePoints) {
+void Ampharos::setDefensePoints(int newDefensePoints) {
   defensePoints = newDefensePoints;
 }
 
-int Lucario::getAttackPoints() const { return attackPoints; }
+int Ampharos::getAttackPoints() const { return attackPoints; }
 
-void Lucario::setAttackPoints(int newAttackPoints) {
+void Ampharos::setAttackPoints(int newAttackPoints) {
   attackPoints = newAttackPoints;
 }
 
-void Lucario::swingAttack(Player *opponent) {
+void Ampharos::swingAttack(Player *opponent) {
   int damage = getDamage();
   opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
             << " causing " << damage << " damage!\n";
 }
 
-void Lucario::heal() {
+void Ampharos::heal() {
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
-void Lucario::raiseDefense() {
+void Ampharos::raiseDefense() {
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 90;
+  int newDefense = currentDefense + 60;
   setDefensePoints(newDefense);
 }
 
-void Lucario::raiseAttack() {
+void Ampharos::raiseAttack() {
   int currentAttack = getAttackPoints();
-  int increaseAmount = 50;
+  int increaseAmount = 60;
   int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
   std::cout << "Attack points raised by " << increaseAmount << " to "
             << newAttack << "!\n";
 }
 
-void Lucario::switchPokemon() {
+void Ampharos::switchPokemon() {
   std::cout << getName() << " switched to Pokemon!" << std::endl;
 }
 
-void Lucario::displayStats() {
+void Ampharos::displayStats() {
   std::cout << "Name: " << getName() << std::endl;
   std::cout << "Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Attack Damage: " << getDamage() << std::endl;
 }
 
-void Lucario::resetActionTaken() { actionTaken = false; }
+void Ampharos::resetActionTaken() { actionTaken = false; }
 
-void Lucario::performTurnAction() {
+void Ampharos::performTurnAction() {
   raiseAttack();
   actionTaken = true;
 }

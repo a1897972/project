@@ -1,11 +1,11 @@
 #include "Gardevoir.h"
 #include <iostream>
 
-Gardevoir::Gardevoir(std::string name, int health, int damage,
-                     std::string attack, int healingPower, int defensePoints,
+Gardevoir::Gardevoir(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
-    : Player(name, health, damage), attack(attack), healingPower(healingPower),
-      defensePoints(defensePoints), attackPoints(attackPoints) {}
+    : Player(name, 450, 120), attack("Magical Shot"), healingPower(30),
+      defensePoints(defensePoints), attackPoints(attackPoints),
+      isGardevoirActive(true), actionTaken(false) {}
 
 std::string Gardevoir::getAttack() const { return attack; }
 
@@ -30,33 +30,46 @@ void Gardevoir::setAttackPoints(int newAttackPoints) {
 }
 
 void Gardevoir::swingAttack(Player *opponent) {
-  opponent->takeDamage(getDamage());
+  int damage = getDamage();
+  opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
-            << "!\n";
+            << " causing " << damage << " damage!\n";
 }
 
 void Gardevoir::heal() {
-  // Implement the healing logic here
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
 void Gardevoir::raiseDefense() {
-  // Implement the logic to raise defense points here
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 10; // You can adjust the amount as needed
+  int newDefense = currentDefense + 70;
   setDefensePoints(newDefense);
 }
 
 void Gardevoir::raiseAttack() {
-  // Implement the logic to raise attack points here
   int currentAttack = getAttackPoints();
-  int newAttack = currentAttack + 10; // You can adjust the amount as needed
+  int increaseAmount = 50;
+  int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
+  std::cout << "Attack points raised by " << increaseAmount << " to "
+            << newAttack << "!\n";
 }
 
 void Gardevoir::switchPokemon() {
-  // Implement the retreat logic here
-  std::cout << getName() << " retreated from the battle! " << std::endl;
+  std::cout << getName() << " switched to Pokemon!" << std::endl;
+}
+
+void Gardevoir::displayStats() {
+  std::cout << "Name: " << getName() << std::endl;
+  std::cout << "Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Attack Damage: " << getDamage() << std::endl;
+}
+
+void Gardevoir::resetActionTaken() { actionTaken = false; }
+
+void Gardevoir::performTurnAction() {
+  raiseAttack();
+  actionTaken = true;
 }

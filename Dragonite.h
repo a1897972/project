@@ -11,10 +11,12 @@ private:
   int defensePoints;
   int attackPoints;
   bool isDragoniteActive; // New member variable to track active Pokemon
+  bool actionTaken; // New member variable to track whether an action has been
+                    // taken on the turn
 
 public:
-  Dragonite(std::string name, int health, int damage, std::string attack,
-            int healingPower, int defensePoints, int attackPoints);
+  Dragonite(std::string name, int healingPower, int defensePoints,
+            int attackPoints);
 
   // Getters and setters
   std::string getAttack() const;
@@ -34,8 +36,13 @@ public:
   void raiseDefense();
   void raiseAttack();
   void switchPokemon();
+  void displayStats(); // New method to display Pokemon stats
 
-  // New member function to check if Dragonite is active
+  // New methods for turn-based actions
+  void resetActionTaken();
+  void performTurnAction();
+
+  // New member function to check if Dragonite is the active Pokemon
   bool isDragoniteActivePokemon() const;
 };
 

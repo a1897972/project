@@ -1,75 +1,75 @@
-#include "Lucario.h"
+#include "Venusaur.h"
 #include <iostream>
 
-Lucario::Lucario(std::string name, int healingPower, int defensePoints,
-                 int attackPoints)
-    : Player(name, 390, 130), attack("Accelerating Stab"), healingPower(30),
+Venusaur::Venusaur(std::string name, int healingPower, int defensePoints,
+                   int attackPoints)
+    : Player(name, 540, 130), attack("Solar Beam"), healingPower(30),
       defensePoints(defensePoints), attackPoints(attackPoints),
-      isLucarioActive(true), actionTaken(false) {}
+      isVenusaurActive(true), actionTaken(false) {}
 
-std::string Lucario::getAttack() const { return attack; }
+std::string Venusaur::getAttack() const { return attack; }
 
-void Lucario::setAttack(std::string newAttack) { attack = newAttack; }
+void Venusaur::setAttack(std::string newAttack) { attack = newAttack; }
 
-int Lucario::getHealingPower() const { return healingPower; }
+int Venusaur::getHealingPower() const { return healingPower; }
 
-void Lucario::setHealingPower(int newHealingPower) {
+void Venusaur::setHealingPower(int newHealingPower) {
   healingPower = newHealingPower;
 }
 
-int Lucario::getDefensePoints() const { return defensePoints; }
+int Venusaur::getDefensePoints() const { return defensePoints; }
 
-void Lucario::setDefensePoints(int newDefensePoints) {
+void Venusaur::setDefensePoints(int newDefensePoints) {
   defensePoints = newDefensePoints;
 }
 
-int Lucario::getAttackPoints() const { return attackPoints; }
+int Venusaur::getAttackPoints() const { return attackPoints; }
 
-void Lucario::setAttackPoints(int newAttackPoints) {
+void Venusaur::setAttackPoints(int newAttackPoints) {
   attackPoints = newAttackPoints;
 }
 
-void Lucario::swingAttack(Player *opponent) {
+void Venusaur::swingAttack(Player *opponent) {
   int damage = getDamage();
   opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
             << " causing " << damage << " damage!\n";
 }
 
-void Lucario::heal() {
+void Venusaur::heal() {
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
-void Lucario::raiseDefense() {
+void Venusaur::raiseDefense() {
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 90;
+  int newDefense = currentDefense + 30;
   setDefensePoints(newDefense);
 }
 
-void Lucario::raiseAttack() {
+void Venusaur::raiseAttack() {
   int currentAttack = getAttackPoints();
-  int increaseAmount = 50;
+  int increaseAmount = 40;
   int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
   std::cout << "Attack points raised by " << increaseAmount << " to "
             << newAttack << "!\n";
 }
 
-void Lucario::switchPokemon() {
+void Venusaur::switchPokemon() {
   std::cout << getName() << " switched to Pokemon!" << std::endl;
 }
 
-void Lucario::displayStats() {
+void Venusaur::displayStats() {
   std::cout << "Name: " << getName() << std::endl;
   std::cout << "Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Attack Damage: " << getDamage() << std::endl;
 }
 
-void Lucario::resetActionTaken() { actionTaken = false; }
+void Venusaur::resetActionTaken() { actionTaken = false; }
 
-void Lucario::performTurnAction() {
+void Venusaur::performTurnAction() {
   raiseAttack();
   actionTaken = true;
 }

@@ -1,21 +1,21 @@
-#ifndef LUCARIO_H
-#define LUCARIO_H
+#ifndef SNORLAX_H
+#define SNORLAX_H
 
 #include "Player1.h"
 #include <string>
 
-class Lucario : public Player {
+class Snorlax : public Player {
 private:
   std::string attack;
   int healingPower;
   int defensePoints;
   int attackPoints;
-  bool isLucarioActive; // New member variable to track active Pokemon
+  bool isSnorlaxActive; // New member variable to track active Pokemon
   bool actionTaken; // New member variable to track whether an action has been
                     // taken on the turn
 
 public:
-  Lucario(std::string name, int healingPower, int defensePoints,
+  Snorlax(std::string name, int healingPower, int defensePoints,
           int attackPoints);
 
   // Getters and setters
@@ -42,8 +42,8 @@ public:
   void resetActionTaken();
   void performTurnAction();
 
-  // New member function to check if Lucario is the active Pokemon
-  bool isLucarioActivePokemon() const;
+  // New member function to check if Snorlax is the active Pokemon
+  bool isSnorlaxActivePokemon() const;
 };
 
 #endif

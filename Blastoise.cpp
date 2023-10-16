@@ -1,11 +1,11 @@
 #include "Blastoise.h"
 #include <iostream>
 
-Blastoise::Blastoise(std::string name, int health, int damage,
-                     std::string attack, int healingPower, int defensePoints,
+Blastoise::Blastoise(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
-    : Player(name, health, damage), attack(attack), healingPower(healingPower),
-      defensePoints(defensePoints), attackPoints(attackPoints) {}
+    : Player(name, 480, 150), attack("Hydro Tackle"), healingPower(30),
+      defensePoints(defensePoints), attackPoints(attackPoints),
+      isBlastoiseActive(true), actionTaken(false) {}
 
 std::string Blastoise::getAttack() const { return attack; }
 
@@ -30,33 +30,46 @@ void Blastoise::setAttackPoints(int newAttackPoints) {
 }
 
 void Blastoise::swingAttack(Player *opponent) {
-  opponent->takeDamage(getDamage());
+  int damage = getDamage();
+  opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
-            << "!\n";
+            << " causing " << damage << " damage!\n";
 }
 
 void Blastoise::heal() {
-  // Implement the healing logic here
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
 void Blastoise::raiseDefense() {
-  // Implement the logic to raise defense points here
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 10; // You can adjust the amount as needed
+  int newDefense = currentDefense + 60;
   setDefensePoints(newDefense);
 }
 
 void Blastoise::raiseAttack() {
-  // Implement the logic to raise attack points here
   int currentAttack = getAttackPoints();
-  int newAttack = currentAttack + 10; // You can adjust the amount as needed
+  int increaseAmount = 40;
+  int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
+  std::cout << "Attack points raised by " << increaseAmount << " to "
+            << newAttack << "!\n";
 }
 
 void Blastoise::switchPokemon() {
-  // Implement the retreat logic here
-  std::cout << getName() << " retreated from the battle! " << std::endl;
+  std::cout << getName() << " switched to Pokemon!" << std::endl;
+}
+
+void Blastoise::displayStats() {
+  std::cout << "Name: " << getName() << std::endl;
+  std::cout << "Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Attack Damage: " << getDamage() << std::endl;
+}
+
+void Blastoise::resetActionTaken() { actionTaken = false; }
+
+void Blastoise::performTurnAction() {
+  raiseAttack();
+  actionTaken = true;
 }

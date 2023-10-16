@@ -1,10 +1,11 @@
 #include "Gengar.h"
 #include <iostream>
 
-Gengar::Gengar(std::string name, int health, int damage, std::string attack,
-               int healingPower, int defensePoints, int attackPoints)
-    : Player(name, health, damage), attack(attack), healingPower(healingPower),
-      defensePoints(defensePoints), attackPoints(attackPoints) {}
+Gengar::Gengar(std::string name, int healingPower, int defensePoints,
+               int attackPoints)
+    : Player(name, 390, 70), attack("Fade to Black"), healingPower(30),
+      defensePoints(defensePoints), attackPoints(attackPoints),
+      isGengarActive(true), actionTaken(false) {}
 
 std::string Gengar::getAttack() const { return attack; }
 
@@ -29,33 +30,46 @@ void Gengar::setAttackPoints(int newAttackPoints) {
 }
 
 void Gengar::swingAttack(Player *opponent) {
-  opponent->takeDamage(getDamage());
+  int damage = getDamage();
+  opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
-            << "!\n";
+            << " causing " << damage << " damage!\n";
 }
 
 void Gengar::heal() {
-  // Implement the healing logic here
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
 void Gengar::raiseDefense() {
-  // Implement the logic to raise defense points here
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 10; // You can adjust the amount as needed
+  int newDefense = currentDefense + 80;
   setDefensePoints(newDefense);
 }
 
 void Gengar::raiseAttack() {
-  // Implement the logic to raise attack points here
   int currentAttack = getAttackPoints();
-  int newAttack = currentAttack + 10; // You can adjust the amount as needed
+  int increaseAmount = 70;
+  int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
+  std::cout << "Attack points raised by " << increaseAmount << " to "
+            << newAttack << "!\n";
 }
 
 void Gengar::switchPokemon() {
-  // Implement the retreat logic here
-  std::cout << getName() << " retreated from the battle! " << std::endl;
+  std::cout << getName() << " switched to Pokemon!" << std::endl;
+}
+
+void Gengar::displayStats() {
+  std::cout << "Name: " << getName() << std::endl;
+  std::cout << "Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Attack Damage: " << getDamage() << std::endl;
+}
+
+void Gengar::resetActionTaken() { actionTaken = false; }
+
+void Gengar::performTurnAction() {
+  raiseAttack();
+  actionTaken = true;
 }

@@ -1,75 +1,75 @@
-#include "Charizard.h"
+#include "Metagross.h"
 #include <iostream>
 
-Charizard::Charizard(std::string name, int healingPower, int defensePoints,
+Metagross::Metagross(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
-    : Player(name, 510, 150), attack("Royal Blaze"), healingPower(30),
+    : Player(name, 450, 160), attack("Iron Cannon"), healingPower(30),
       defensePoints(defensePoints), attackPoints(attackPoints),
-      isCharizardActive(true), actionTaken(false) {}
+      isMetagrossActive(true), actionTaken(false) {}
 
-std::string Charizard::getAttack() const { return attack; }
+std::string Metagross::getAttack() const { return attack; }
 
-void Charizard::setAttack(std::string newAttack) { attack = newAttack; }
+void Metagross::setAttack(std::string newAttack) { attack = newAttack; }
 
-int Charizard::getHealingPower() const { return healingPower; }
+int Metagross::getHealingPower() const { return healingPower; }
 
-void Charizard::setHealingPower(int newHealingPower) {
+void Metagross::setHealingPower(int newHealingPower) {
   healingPower = newHealingPower;
 }
 
-int Charizard::getDefensePoints() const { return defensePoints; }
+int Metagross::getDefensePoints() const { return defensePoints; }
 
-void Charizard::setDefensePoints(int newDefensePoints) {
+void Metagross::setDefensePoints(int newDefensePoints) {
   defensePoints = newDefensePoints;
 }
 
-int Charizard::getAttackPoints() const { return attackPoints; }
+int Metagross::getAttackPoints() const { return attackPoints; }
 
-void Charizard::setAttackPoints(int newAttackPoints) {
+void Metagross::setAttackPoints(int newAttackPoints) {
   attackPoints = newAttackPoints;
 }
 
-void Charizard::swingAttack(Player *opponent) {
+void Metagross::swingAttack(Player *opponent) {
   int damage = getDamage();
   opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
             << " causing " << damage << " damage!\n";
 }
 
-void Charizard::heal() {
+void Metagross::heal() {
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
-void Charizard::raiseDefense() {
+void Metagross::raiseDefense() {
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 40;
+  int newDefense = currentDefense + 60;
   setDefensePoints(newDefense);
 }
 
-void Charizard::raiseAttack() {
+void Metagross::raiseAttack() {
   int currentAttack = getAttackPoints();
-  int increaseAmount = 50;
+  int increaseAmount = 40;
   int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
   std::cout << "Attack points raised by " << increaseAmount << " to "
             << newAttack << "!\n";
 }
 
-void Charizard::switchPokemon() {
+void Metagross::switchPokemon() {
   std::cout << getName() << " switched to Pokemon!" << std::endl;
 }
 
-void Charizard::displayStats() {
+void Metagross::displayStats() {
   std::cout << "Name: " << getName() << std::endl;
   std::cout << "Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Attack Damage: " << getDamage() << std::endl;
 }
 
-void Charizard::resetActionTaken() { actionTaken = false; }
+void Metagross::resetActionTaken() { actionTaken = false; }
 
-void Charizard::performTurnAction() {
+void Metagross::performTurnAction() {
   raiseAttack();
   actionTaken = true;
 }

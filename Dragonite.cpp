@@ -1,11 +1,11 @@
 #include "Dragonite.h"
 #include <iostream>
 
-Dragonite::Dragonite(std::string name, int health, int damage,
-                     std::string attack, int healingPower, int defensePoints,
+Dragonite::Dragonite(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
-    : Player(name, health, damage), attack(attack), healingPower(healingPower),
-      defensePoints(defensePoints), attackPoints(attackPoints) {}
+    : Player(name, 480, 180), attack("Energy Hurricane"), healingPower(30),
+      defensePoints(defensePoints), attackPoints(attackPoints),
+      isDragoniteActive(true), actionTaken(false) {}
 
 std::string Dragonite::getAttack() const { return attack; }
 
@@ -30,33 +30,46 @@ void Dragonite::setAttackPoints(int newAttackPoints) {
 }
 
 void Dragonite::swingAttack(Player *opponent) {
-  opponent->takeDamage(getDamage());
+  int damage = getDamage();
+  opponent->takeDamage(damage);
   std::cout << getName() << " used " << attack << " at " << opponent->getName()
-            << "!\n";
+            << " causing " << damage << " damage!\n";
 }
 
 void Dragonite::heal() {
-  // Implement the healing logic here
   int currentHealth = getHealth();
   int newHealth = currentHealth + getHealingPower();
   setHealth(newHealth);
 }
 
 void Dragonite::raiseDefense() {
-  // Implement the logic to raise defense points here
   int currentDefense = getDefensePoints();
-  int newDefense = currentDefense + 10; // You can adjust the amount as needed
+  int newDefense = currentDefense + 60;
   setDefensePoints(newDefense);
 }
 
 void Dragonite::raiseAttack() {
-  // Implement the logic to raise attack points here
   int currentAttack = getAttackPoints();
-  int newAttack = currentAttack + 10; // You can adjust the amount as needed
+  int increaseAmount = 40;
+  int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
+  std::cout << "Attack points raised by " << increaseAmount << " to "
+            << newAttack << "!\n";
 }
 
 void Dragonite::switchPokemon() {
-  // Implement the retreat logic here
-  std::cout << getName() << " retreated from the battle! " << std::endl;
+  std::cout << getName() << " switched to Pokemon!" << std::endl;
+}
+
+void Dragonite::displayStats() {
+  std::cout << "Name: " << getName() << std::endl;
+  std::cout << "Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Attack Damage: " << getDamage() << std::endl;
+}
+
+void Dragonite::resetActionTaken() { actionTaken = false; }
+
+void Dragonite::performTurnAction() {
+  raiseAttack();
+  actionTaken = true;
 }

@@ -1,22 +1,22 @@
-#ifndef LUCARIO_H
-#define LUCARIO_H
+#ifndef METAGROSS_H
+#define METAGROSS_H
 
 #include "Player1.h"
 #include <string>
 
-class Lucario : public Player {
+class Metagross : public Player {
 private:
   std::string attack;
   int healingPower;
   int defensePoints;
   int attackPoints;
-  bool isLucarioActive; // New member variable to track active Pokemon
+  bool isMetagrossActive; // New member variable to track active Pokemon
   bool actionTaken; // New member variable to track whether an action has been
                     // taken on the turn
 
 public:
-  Lucario(std::string name, int healingPower, int defensePoints,
-          int attackPoints);
+  Metagross(std::string name, int healingPower, int defensePoints,
+            int attackPoints);
 
   // Getters and setters
   std::string getAttack() const;
@@ -42,8 +42,8 @@ public:
   void resetActionTaken();
   void performTurnAction();
 
-  // New member function to check if Lucario is the active Pokemon
-  bool isLucarioActivePokemon() const;
+  // New member function to check if Metagross is the active Pokemon
+  bool isMetagrossActivePokemon() const;
 };
 
 #endif

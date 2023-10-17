@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Venusaur is the active Pokemon
-  bool isVenusaurActivePokemon() const;
+  bool isVenusaurActivePokemon() { return isVenusaurActive; };
 };
 
 #endif

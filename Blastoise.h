@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Blastoise is the active Pokemon
-  bool isBlastoiseActivePokemon() const;
+  bool isBlastoiseActivePokemon() { return isBlastoiseActive; };
 };
 
 #endif

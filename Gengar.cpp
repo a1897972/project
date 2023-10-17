@@ -53,19 +53,28 @@ void Gengar::raiseAttack() {
   int increaseAmount = 70;
   int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
-  std::cout << "Attack points raised by " << increaseAmount << " to "
+  std::cout << "Attack points raised by " << currentAttack << " to "
             << newAttack << "!\n";
 }
 
 void Gengar::switchPokemon() {
   std::cout << getName() << " switched to Pokemon!" << std::endl;
+  for (int i = 0; i < 2; i++) {
+    if (isGengarActive == false) {
+      isGengarActive = true;
+      break;
+    };
+    if (isGengarActive == true) {
+      isGengarActive = false;
+      break;
+    };
+  }
 }
 
 void Gengar::displayStats() {
   std::cout << "Current Pokemon: " << getName() << std::endl;
   std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Current Attack Damage: " << getDamage() << std::endl;
-  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Gengar::resetActionTaken() { actionTaken = false; }

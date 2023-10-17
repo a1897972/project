@@ -53,19 +53,28 @@ void Charizard::raiseAttack() {
   int increaseAmount = 50;
   int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
-  std::cout << "Attack points raised by " << increaseAmount << " to "
+  std::cout << "Attack points raised by " << currentAttack << " to "
             << newAttack << "!\n";
 }
 
 void Charizard::switchPokemon() {
-  std::cout << getName() << " switched to Pokemon!" << std::endl;
+  std::cout << getName() << " switched Pokemon!" << std::endl;
+  for (int i = 0; i < 2; i++) {
+    if (isCharizardActive == false) {
+      isCharizardActive = true;
+      break;
+    };
+    if (isCharizardActive == true) {
+      isCharizardActive = false;
+      break;
+    };
+  }
 }
 
 void Charizard::displayStats() {
   std::cout << "Current Pokemon: " << getName() << std::endl;
   std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Current Attack Damage: " << getDamage() << std::endl;
-  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Charizard::resetActionTaken() { actionTaken = false; }

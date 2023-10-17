@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Gengar is the active Pokemon
-  bool isGengarActivePokemon() const;
+  bool isGengarActivePokemon() { return isGengarActive; };
 };
 
 #endif

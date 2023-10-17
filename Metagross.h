@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Metagross is the active Pokemon
-  bool isMetagrossActivePokemon() const;
+  bool isMetagrossActivePokemon() { return isMetagrossActive; };
 };
 
 #endif

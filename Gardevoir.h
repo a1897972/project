@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Gardevoir is the active Pokemon
-  bool isGardevoirActivePokemon() const;
+  bool isGardevoirActivePokemon() { return isGardevoirActive; };
 };
 
 #endif

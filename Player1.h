@@ -1,5 +1,5 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#ifndef PLAYER1_H
+#define PLAYER1_H
 
 #include <string>
 
@@ -20,6 +20,7 @@ public:
 
   void attack(Player *opponent, int damage);
   void takeDamage(int damage);
+  void changeActive() {}
 };
 
 #endif

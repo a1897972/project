@@ -53,19 +53,28 @@ void Ampharos::raiseAttack() {
   int increaseAmount = 60;
   int newAttack = currentAttack + increaseAmount;
   setAttackPoints(newAttack);
-  std::cout << "Attack points raised by " << increaseAmount << " to "
+  std::cout << "Attack points raised by " << currentAttack << " to "
             << newAttack << "!\n";
 }
 
 void Ampharos::switchPokemon() {
   std::cout << getName() << " switched to Pokemon!" << std::endl;
+  for (int i = 0; i < 2; i++) {
+    if (isAmpharosActive == false) {
+      isAmpharosActive = true;
+      break;
+    };
+    if (isAmpharosActive == true) {
+      isAmpharosActive = false;
+      break;
+    };
+  }
 }
 
 void Ampharos::displayStats() {
   std::cout << "Current Pokemon: " << getName() << std::endl;
   std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
   std::cout << "Current Attack Damage: " << getDamage() << std::endl;
-  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Ampharos::resetActionTaken() { actionTaken = false; }

@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Snorlax is the active Pokemon
-  bool isSnorlaxActivePokemon() const;
+  bool isSnorlaxActivePokemon() { return isSnorlaxActive; };
 };
 
 #endif

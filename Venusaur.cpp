@@ -4,8 +4,8 @@
 Venusaur::Venusaur(std::string name, int healingPower, int defensePoints,
                    int attackPoints)
     : Player(name, 540, 130), attack("Solar Beam"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isVenusaurActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isVenusaurActive(true),
+      actionTaken(false) {}
 
 std::string Venusaur::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Venusaur::switchPokemon() {
 }
 
 void Venusaur::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Venusaur::resetActionTaken() { actionTaken = false; }

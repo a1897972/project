@@ -4,8 +4,8 @@
 Charizard::Charizard(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
     : Player(name, 510, 150), attack("Royal Blaze"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isCharizardActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isCharizardActive(true),
+      actionTaken(false) {}
 
 std::string Charizard::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Charizard::switchPokemon() {
 }
 
 void Charizard::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Charizard::resetActionTaken() { actionTaken = false; }

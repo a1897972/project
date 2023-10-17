@@ -4,8 +4,8 @@
 Dragonite::Dragonite(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
     : Player(name, 480, 180), attack("Energy Hurricane"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isDragoniteActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isDragoniteActive(true),
+      actionTaken(false) {}
 
 std::string Dragonite::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Dragonite::switchPokemon() {
 }
 
 void Dragonite::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Dragonite::resetActionTaken() { actionTaken = false; }

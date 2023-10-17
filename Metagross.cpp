@@ -4,8 +4,8 @@
 Metagross::Metagross(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
     : Player(name, 450, 160), attack("Iron Cannon"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isMetagrossActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isMetagrossActive(true),
+      actionTaken(false) {}
 
 std::string Metagross::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Metagross::switchPokemon() {
 }
 
 void Metagross::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Metagross::resetActionTaken() { actionTaken = false; }

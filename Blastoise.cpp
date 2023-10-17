@@ -4,8 +4,8 @@
 Blastoise::Blastoise(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
     : Player(name, 480, 150), attack("Hydro Tackle"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isBlastoiseActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isBlastoiseActive(true),
+      actionTaken(false) {}
 
 std::string Blastoise::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Blastoise::switchPokemon() {
 }
 
 void Blastoise::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Blastoise::resetActionTaken() { actionTaken = false; }

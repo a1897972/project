@@ -4,8 +4,8 @@
 Lucario::Lucario(std::string name, int healingPower, int defensePoints,
                  int attackPoints)
     : Player(name, 390, 130), attack("Accelerating Stab"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isLucarioActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isLucarioActive(true),
+      actionTaken(false) {}
 
 std::string Lucario::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Lucario::switchPokemon() {
 }
 
 void Lucario::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Lucario::resetActionTaken() { actionTaken = false; }

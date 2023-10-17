@@ -4,8 +4,8 @@
 Gardevoir::Gardevoir(std::string name, int healingPower, int defensePoints,
                      int attackPoints)
     : Player(name, 450, 120), attack("Magical Shot"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isGardevoirActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isGardevoirActive(true),
+      actionTaken(false) {}
 
 std::string Gardevoir::getAttack() const { return attack; }
 
@@ -62,11 +62,11 @@ void Gardevoir::switchPokemon() {
 }
 
 void Gardevoir::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
-
 void Gardevoir::resetActionTaken() { actionTaken = false; }
 
 void Gardevoir::performTurnAction() {

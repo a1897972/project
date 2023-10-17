@@ -4,8 +4,8 @@
 Gengar::Gengar(std::string name, int healingPower, int defensePoints,
                int attackPoints)
     : Player(name, 390, 70), attack("Fade to Black"), healingPower(30),
-      defensePoints(defensePoints), attackPoints(attackPoints),
-      isGengarActive(true), actionTaken(false) {}
+      defensePoints(0), attackPoints(0), isGengarActive(true),
+      actionTaken(false) {}
 
 std::string Gengar::getAttack() const { return attack; }
 
@@ -62,9 +62,10 @@ void Gengar::switchPokemon() {
 }
 
 void Gengar::displayStats() {
-  std::cout << "Name: " << getName() << std::endl;
-  std::cout << "Health Points (HP): " << getHealth() << std::endl;
-  std::cout << "Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Pokemon: " << getName() << std::endl;
+  std::cout << "Current Health Points (HP): " << getHealth() << std::endl;
+  std::cout << "Current Attack Damage: " << getDamage() << std::endl;
+  std::cout << "Current Defence Points: " << getDamage() << std::endl;
 }
 
 void Gengar::resetActionTaken() { actionTaken = false; }

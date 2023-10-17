@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Dragonite is the active Pokemon
-  bool isDragoniteActivePokemon() const;
+  bool isDragoniteActivePokemon() { return isDragoniteActive; };
 };
 
 #endif

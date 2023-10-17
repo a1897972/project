@@ -17,7 +17,6 @@ private:
 public:
   Charizard(std::string name, int healingPower, int defensePoints,
             int attackPoints);
-
   // Getters and setters
   std::string getAttack() const;
   void setAttack(std::string newAttack);
@@ -43,7 +42,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Charizard is the active Pokemon
-  bool isCharizardActivePokemon() const;
+  bool isCharizardActivePokemon() { return isCharizardActive; };
 };
 
 #endif

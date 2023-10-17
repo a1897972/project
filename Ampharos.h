@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Ampharos is the active Pokemon
-  bool isAmpharosActivePokemon() const;
+  bool isAmpharosActivePokemon() { return isAmpharosActive; };
 };
 
 #endif

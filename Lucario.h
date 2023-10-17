@@ -43,7 +43,7 @@ public:
   void performTurnAction();
 
   // New member function to check if Lucario is the active Pokemon
-  bool isLucarioActivePokemon() const;
+  bool isLucarioActivePokemon() { return isLucarioActive; };
 };
 
 #endif
